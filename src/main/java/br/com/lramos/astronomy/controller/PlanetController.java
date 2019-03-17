@@ -31,5 +31,15 @@ public class PlanetController {
 		
 		return model;
 	}
+	
+	/**
+	 * TODO me delete
+	 * 
+	 * @return
+	 */
+	@GetMapping("oi")
+	public ModelAndView telaPadrao() {
+		return new ModelAndView("tela-padrao");
+	}
 
 }

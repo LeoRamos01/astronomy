@@ -8,30 +8,30 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import br.com.lramos.astronomy.business.PlanetaBusiness;
-import br.com.lramos.astronomy.entity.PlanetEntity;
+import br.com.lramos.astronomy.business.SateliteBusiness;
+import br.com.lramos.astronomy.entity.SateliteEntity;
 
 /**
  * @author leonardorm
  *
  */
 @Controller
-@RequestMapping("/astronomy/br/planetas")
-public class PlanetController {
+@RequestMapping("/astronomy/br/satelites")
+public class SateliteController {
 	
-	private static final String PAGINA_PLANETAS = "planetas";
+	private static final String PAGINA_SATELITES = "satelites";
 	
 	@Autowired
-	private PlanetaBusiness planetaBusiness;
+	private SateliteBusiness sateliteBusiness;
 	
 	@GetMapping
 	public ModelAndView listar() {
-		ModelAndView model = new ModelAndView(PAGINA_PLANETAS);
+		ModelAndView model = new ModelAndView(PAGINA_SATELITES);
 		
-		List<PlanetEntity> planetas = planetaBusiness.listaTodos();
-		model.addObject(PAGINA_PLANETAS, planetas);
+		List<SateliteEntity> satelites = sateliteBusiness.listaTodos();
+		model.addObject(PAGINA_SATELITES, satelites);
 		
 		return model;
 	}
-	
+
 }

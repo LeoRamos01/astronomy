@@ -15,7 +15,7 @@ import lombok.Data;
  *
  */
 @Data
-@Entity(name = "planet")
+@Entity(name = "satellite")
 public class SateliteEntity {
 
 	@Id
@@ -24,12 +24,10 @@ public class SateliteEntity {
 	private Long id;
 
 	@ManyToOne
-	@JoinColumn
+	@JoinColumn(name = "planet_id")
 	private PlanetEntity planeta;
 
 	private String name;
-
-	private String nomeBR;
 
 	private Double gm;
 	

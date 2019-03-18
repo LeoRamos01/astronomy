@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+	<meta charset="UTF-8" />
+	
+	<title>Astronomy BR</title>
+	
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	
+	<link href="/images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+	
+	<link href="/css/bootstrap.min.css" rel="stylesheet"/>
+ 	<link href="/css/simple-sidebar.css" rel="stylesheet">
+ 	<link href="/css/menuLateral.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <div class="d-flex" id="wrapper">
+
+    <!-- Sidebar -->
+    <div class="bg-light border-right" id="sidebar-wrapper">
+      <div class="sidebar-heading bgimg white">Astronomy BR</div>
+      <div class="list-group list-group-flush">
+        <a href="" class="list-group-item list-group-item-action bg-light">Planetas</a>
+        <a href="" class="list-group-item list-group-item-action bg-light">Satélites</a>
+        <div class="bg-light list-group-item">Calculadoras</div>
+        <ul>
+        	<li><a href="" class="list-group-item list-group-item-action bg-light">Peso</a></li>
+        	<li><a href="" class="list-group-item list-group-item-action bg-light">Idade</a></li>
+        	<li><a href="" class="list-group-item list-group-item-action bg-light">Escalas</a></li>
+        </ul>
+      </div>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+
+      <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+        <button class="btn btn-primary" id="menu-toggle">Colapsar Menu</button>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Dropdown
+              </a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="container-fluid">
+      		<div layout:fragment="conteudo">
+			</div>
+      </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+
+  </div>
+  <!-- /#wrapper -->
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="/js/jquery-3.2.1.min.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
+
+  <!-- Menu Toggle Script -->
+  <script>
+  	var colapse = true;
+  
+    $("#menu-toggle").click(function(e) {
+    	
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+      
+      if (colapse === true) {
+    	  colapse = false;
+    	  $("#menu-toggle").text("Expandir Menu");  
+      }
+      else {
+    	  colapse = true;
+    	  $("#menu-toggle").text("Colapsar Menu");  
+      }
+      
+    });
+  </script>
+
+</body>
+
+</html>

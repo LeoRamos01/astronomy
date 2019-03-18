@@ -1,48 +1,33 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
-<head>
-<meta charset="UTF-8" />
+<html layout:decorate="telaPadrao">
 
-<!-- Bootstrap Core CSS -->
-<link type="text/css" href="/css/bootstrap.min.css" rel="stylesheet" />
-
-<!-- Bootstrap Tags CSS -->
-<link type="text/css" href="/css/bootstrap-tagsinput.css" rel="stylesheet" />
-
-<!-- jQuery -->
-<script src="/js/jquery-3.2.1.min.js"></script>
-
-<!-- Bootstrap Core JavaScript -->
-<script src="/js/bootstrap.min.js"></script>
-
-</head>
-
-		<div class="panel panel-default">
-			<div class="panel-heading">Lista</div>
+	<div layout:fragment="conteudo">
+	
+		<div class="card">
+			<div class="card-body">
 			
-			<div class="panel-body">
 				<table id="tabela" class="table table-bordered table-striped">
-					<thead>
+					<thead class="thead-dark">
 						<tr>
-							<th class="text-center col-md-2">Planeta</th>
-							<th class="text-center col-md-2">Massa (10<sup>24</sup>kg)</th>
-							<th class="text-center col-md-2">Diâmetro (km)</th>
-							<th class="text-center col-md-2">Gravidade (m/s<sup>2</sup>)</th>
+							<th scope="col">Planeta</th>
+							<th scope="col">Massa (10<sup>24</sup>kg)</th>
+							<th scope="col">Diâmetro (km)</th>
+							<th scope="col">Gravidade (m/s<sup>2</sup>)</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr th:each="planeta : ${planetas}">
-							<td class="text-center" th:text="${planeta.nomeBR}" title="Detalhes" ></td>
+							<td class="text-center" th:text="${planeta.nomeBR}" ></td>
 							<td class="text-center" th:text="${planeta.mass}" ></td>
 							<td class="text-center" th:text="${planeta.diameter}"></td>
 							<td class="text-center" th:text="${planeta.gravity}"></td>
 						</tr>
 					</tbody>
 				</table>
+
 			</div>
-			
 		</div>
+	
+	</div>
 
 </html>

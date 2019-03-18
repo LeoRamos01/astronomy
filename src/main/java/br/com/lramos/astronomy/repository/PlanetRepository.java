@@ -12,4 +12,10 @@ import br.com.lramos.astronomy.entity.PlanetEntity;
 @Repository
 public interface PlanetRepository extends JpaRepository<PlanetEntity, Long> {
 
+	/**
+	 * @param string
+	 * @return {@link PlanetEntity} correspondente à Terra.
+	 */
+	public PlanetEntity findByName(String string);
+
 }

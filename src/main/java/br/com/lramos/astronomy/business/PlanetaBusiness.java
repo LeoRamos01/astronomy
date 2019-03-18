@@ -24,5 +24,9 @@ public class PlanetaBusiness {
 	public List<PlanetEntity> listaTodos() {
 		return planetRepo.findAll();
 	}
+	
+	public PlanetEntity getTerra () {
+		return planetRepo.findByName("Earth");
+	}
 
 }

@@ -13,15 +13,17 @@
 							<th scope="col">Massa (10<sup>24</sup>kg)</th>
 							<th scope="col">Diâmetro (km)</th>
 							<th scope="col">Gravidade (m/s<sup>2</sup>)</th>
+							<th scope="col">G<sub>Terra</sub> </th>
 							<th scope="col">n° Luas</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr th:each="planeta : ${planetas}">
 							<td class="text-center" th:text="${planeta.nomeBR}" ></td>
-							<td class="text-center" th:text="${planeta.mass}" ></td>
-							<td class="text-center" th:text="${planeta.diameter}"></td>
-							<td class="text-center" th:text="${planeta.gravity}"></td>
+							<td class="text-center" th:text="${#numbers.formatDecimal(planeta.mass, 1, 'POINT', 2, 'COMMA')}" ></td>
+							<td class="text-center" th:text="${#numbers.formatDecimal(planeta.diameter, 1, 'POINT', 0, 'COMMA')}"></td>
+							<td class="text-center" th:text="${#numbers.formatDecimal(planeta.gravity, 1, 'POINT', 1, 'COMMA')}"></td>
+							<td class="text-center" th:text="${#numbers.formatDecimal(planeta.gravity / terra.gravity, 1, 'POINT', 1, 'COMMA')}"></td>
 							<td class="text-center" th:if="${planeta.numberMoons} > 0">
 								
 								<a class="btn btn-link btn-xs" th:text="${planeta.numberMoons}"  th:href="@{/astronomy/br/satelites/{id}(id=${planeta.id})}" 

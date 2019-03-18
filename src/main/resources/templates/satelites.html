@@ -22,6 +22,9 @@
 							<td class="text-center" th:text="${satelite.radius}"></td>
 							<td class="text-center" th:text="${satelite.gm}"></td>
 						</tr>
+						<tr>
+							<td colspan="6" th:if="${#lists.isEmpty(satelites)}" th:text="'O planeta ' + ${planeta.nomeBR} + ' não possui satélites.'"></td>
+						</tr>
 					</tbody>
 				</table>
 

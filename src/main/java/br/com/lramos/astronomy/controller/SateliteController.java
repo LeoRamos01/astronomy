@@ -5,10 +5,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.lramos.astronomy.business.SateliteBusiness;
+import br.com.lramos.astronomy.entity.PlanetEntity;
 import br.com.lramos.astronomy.entity.SateliteEntity;
 
 /**
@@ -30,6 +32,17 @@ public class SateliteController {
 		
 		List<SateliteEntity> satelites = sateliteBusiness.listaTodos();
 		model.addObject(PAGINA_SATELITES, satelites);
+		
+		return model;
+	}
+	
+	@GetMapping("{id}")
+	public ModelAndView listarPorPlaneta(@PathVariable("id") PlanetEntity id) {
+		ModelAndView model = new ModelAndView(PAGINA_SATELITES);
+		
+		List<SateliteEntity> satelites = sateliteBusiness.listaTodosPorPlaneta(id);
+		model.addObject(PAGINA_SATELITES, satelites);
+		model.addObject("planeta", id);
 		
 		return model;
 	}

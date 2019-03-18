@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.lramos.astronomy.entity.PlanetEntity;
 import br.com.lramos.astronomy.entity.SateliteEntity;
 import br.com.lramos.astronomy.repository.SateliteRepository;
 
@@ -23,6 +24,10 @@ public class SateliteBusiness {
 	 */
 	public List<SateliteEntity> listaTodos() {
 		return sateliteRepo.findAll();
+	}
+
+	public List<SateliteEntity> listaTodosPorPlaneta(PlanetEntity id) {
+		return sateliteRepo.findAllByPlaneta(id);
 	}
 	
 }

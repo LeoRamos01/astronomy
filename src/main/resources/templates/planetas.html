@@ -18,7 +18,13 @@
 					</thead>
 					<tbody>
 						<tr th:each="planeta : ${planetas}">
-							<td class="text-center" th:text="${planeta.nomeBR}" ></td>
+							<td class="text-center">
+								
+								<a class="btn btn-link btn-xs" th:text="${planeta.nomeBR}"  th:href="@{/astronomy/br/satelites/{id}(id=${planeta.id})}" 
+										title="Editar" rel="tooltip" data-placement="top">
+								</a>
+							
+							</td>
 							<td class="text-center" th:text="${planeta.mass}" ></td>
 							<td class="text-center" th:text="${planeta.diameter}"></td>
 							<td class="text-center" th:text="${planeta.gravity}"></td>

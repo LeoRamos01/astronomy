@@ -18,17 +18,20 @@
 					</thead>
 					<tbody>
 						<tr th:each="planeta : ${planetas}">
-							<td class="text-center">
-								
-								<a class="btn btn-link btn-xs" th:text="${planeta.nomeBR}"  th:href="@{/astronomy/br/satelites/{id}(id=${planeta.id})}" 
-										title="Editar" rel="tooltip" data-placement="top">
-								</a>
-							
-							</td>
+							<td class="text-center" th:text="${planeta.nomeBR}" ></td>
 							<td class="text-center" th:text="${planeta.mass}" ></td>
 							<td class="text-center" th:text="${planeta.diameter}"></td>
 							<td class="text-center" th:text="${planeta.gravity}"></td>
-							<td class="text-center" th:text="${planeta.numberMoons}"></td>
+							<td class="text-center" th:if="${planeta.numberMoons} > 0">
+								
+								<a class="btn btn-link btn-xs" th:text="${planeta.numberMoons}"  th:href="@{/astronomy/br/satelites/{id}(id=${planeta.id})}" 
+										title="Ver luas" rel="tooltip" data-placement="auto">
+								</a>
+								
+							</td>
+							<td class="text-center" th:if="${planeta.numberMoons} == 0">
+								0
+							</td>
 						</tr>
 					</tbody>
 				</table>

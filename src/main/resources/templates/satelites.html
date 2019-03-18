@@ -9,16 +9,16 @@
 				<table id="tabela" class="table table-bordered table-striped">
 					<thead class="thead-dark">
 						<tr>
-							<th scope="col">Satélite</th>
 							<th scope="col">Planeta</th>
+							<th scope="col">Satélite</th>
 							<th scope="col">Raio (km)</th>
 							<th scope="col">GM (km<sup>3</sup>/s<sup>3</sup>)</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr th:each="satelite : ${satelites}">
-							<td class="text-center" th:text="${satelite.name}" ></td>
 							<td class="text-center" th:text="${satelite.planeta.nomeBR}" ></td>
+							<td class="text-center" th:text="${satelite.name}" ></td>
 							<td class="text-center" th:text="${satelite.radius}"></td>
 							<td class="text-center" th:text="${satelite.gm}"></td>
 						</tr>

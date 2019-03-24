@@ -12,15 +12,15 @@
 							<th scope="col">Satélite</th>
 							<th scope="col">Planeta</th>
 							<th scope="col">Diâmetro (km)</th>
-							<th scope="col">GM (km<sup>3</sup>/s<sup>3</sup>)</th>
+							<th scope="col">Gravidade superficial (m/s<sup>2</sup>)</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr th:each="satelite, iStat : ${satelites}">
 							<td class="text-center" th:text="${satelite.name}" ></td>
 							<td class="text-center" th:text="${satelite.planeta.nomeBR}" ></td>
-							<td class="text-center" th:text="${satelite.radius * 2}"></td>
-							<td class="text-center" th:text="${satelite.gm}"></td>
+							<td class="text-center" th:text="${#numbers.formatDecimal(satelite.radius * 2, 1, 'POINT', 1, 'COMMA')}"></td>
+							<td class="text-center" th:text="${#numbers.formatDecimal(satelite.gm / (satelite.radius * satelite.radius) * 1000, 1, 'POINT', 4, 'COMMA')}"></td>
 						</tr>
 						<tr>
 							<td colspan="6" th:if="${#lists.isEmpty(satelites)}" th:text="Nada a exibir."></td>

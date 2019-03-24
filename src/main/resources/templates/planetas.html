@@ -14,6 +14,7 @@
 							<th scope="col">Diâmetro (km)</th>
 							<th scope="col">Gravidade (m/s<sup>2</sup>)</th>
 							<th scope="col">G<sub>Terra</sub> </th>
+							<th scope="col">Densidade (g/cm<sup>3</sup>)</th>
 							<th scope="col">n° Luas</th>
 						</tr>
 					</thead>
@@ -24,6 +25,7 @@
 							<td class="text-center" th:text="${#numbers.formatDecimal(planeta.diameter, 1, 'POINT', 0, 'COMMA')}"></td>
 							<td class="text-center" th:text="${#numbers.formatDecimal(planeta.gravity, 1, 'POINT', 1, 'COMMA')}"></td>
 							<td class="text-center" th:text="${#numbers.formatDecimal(planeta.gravity / terra.gravity, 1, 'POINT', 1, 'COMMA')}"></td>
+							<td class="text-center" th:text="${#numbers.formatDecimal(planeta.density / 1000, 1, 'POINT', 1, 'COMMA')}"></td>
 							<td class="text-center" th:if="${planeta.numberMoons} > 0">
 								
 								<a class="btn btn-link btn-xs" th:text="${planeta.numberMoons}"  th:href="@{/astronomy/br/satelites/{id}(id=${planeta.id})}" 

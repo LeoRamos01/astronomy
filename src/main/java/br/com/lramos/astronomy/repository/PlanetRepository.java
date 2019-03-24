@@ -1,5 +1,7 @@
 package br.com.lramos.astronomy.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -17,5 +19,12 @@ public interface PlanetRepository extends JpaRepository<PlanetEntity, Long> {
 	 * @return {@link PlanetEntity} correspondente à Terra.
 	 */
 	public PlanetEntity findByName(String string);
+
+	/**
+	 * {@link List} dos planetas ordenados pela distância relativa ao Sol.
+	 * 
+	 * @return
+	 */
+	public List<PlanetEntity> findAllByOrderByOrdem();
 
 }

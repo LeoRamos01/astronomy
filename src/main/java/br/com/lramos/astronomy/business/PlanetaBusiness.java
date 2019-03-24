@@ -22,7 +22,7 @@ public class PlanetaBusiness {
 	 * @return {@link List} de todos os {@link PlanetEntity}.
 	 */
 	public List<PlanetEntity> listaTodos() {
-		return planetRepo.findAll();
+		return planetRepo.findAllByOrderByOrdem();
 	}
 	
 	public PlanetEntity getTerra () {

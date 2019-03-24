@@ -17,8 +17,15 @@ public interface SateliteRepository extends JpaRepository<SateliteEntity, Long>{
 
 	/**
 	 * @param id
-	 * @return {@link List} de todos os {@link SateliteEntity} que pertençam a um {@link PlanetEntity}.
+	 * @return {@link List} de todos os {@link SateliteEntity} que pertençam a um {@link PlanetEntity} e em seguida pelo
+	 * {@link SateliteEntity#getRadius()}.
 	 */
-	public List<SateliteEntity> findAllByPlaneta(PlanetEntity id);
+	public List<SateliteEntity> findAllByPlanetaOrderByRadiusDesc(PlanetEntity id);
+
+	/**
+	 * @return {@link List} de todos os {@link SateliteEntity} ordenados por {@link PlanetEntity#getOrdem()} e em seguida pelo
+	 * {@link SateliteEntity#getRadius()}.
+	 */
+	public List<SateliteEntity> findAllByOrderByPlanetaOrdemAscRadiusDesc();
 	
 }

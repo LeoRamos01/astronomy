@@ -16,19 +16,43 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each="satelite : ${satelites}">
+						<tr th:each="satelite, iStat : ${satelites}">
 							<td class="text-center" th:text="${satelite.name}" ></td>
 							<td class="text-center" th:text="${satelite.planeta.nomeBR}" ></td>
 							<td class="text-center" th:text="${satelite.radius * 2}"></td>
 							<td class="text-center" th:text="${satelite.gm}"></td>
 						</tr>
 						<tr>
-							<td colspan="6" th:if="${#lists.isEmpty(satelites)}" th:text="'O planeta ' + ${planeta.nomeBR} + ' não possui satélites.'"></td>
+							<td colspan="6" th:if="${#lists.isEmpty(satelites)}" th:text="Nada a exibir."></td>
 						</tr>
 					</tbody>
 				</table>
+				
+				<nav aria-label="">
+				  <ul class="pagination">
+				  
+				    <li class="page-item" th:if="${atual == 0}"><a class="page-link" ><span aria-hidden="true">&laquo;</span></a></li>
+				  
+				    <li class="page-item" th:each="number : ${pageNumbers}" th:switch="${number}" >
+				    
+				      <a th:case="-1" class="page-link" th:if="${atual != 0}" th:href="${planeta == null} ? @{/astronomy/br/satelites(size=${satelites.size}, page=${atual - 1})} : @{/astronomy/br/satelites/{id}(id=${planeta.id} , size=${satelites.size}, page=${atual - 1})}" >
+				        <span aria-hidden="true">&laquo;</span>
+				      </a>
+				      
+				      <a th:case="${#lists.size(pageNumbers) - 2}" th:if="${#lists.size(pageNumbers) - 2 != atual}" class="page-link" th:href="${planeta == null} ? @{/astronomy/br/satelites(size=${satelites.size}, page=${atual + 1})} : @{/astronomy/br/satelites/{id}(id=${planeta.id} , size=${satelites.size}, page=${atual + 1})}" >
+				        <span aria-hidden="true">&raquo;</span>
+				      </a>
+				    
+					  <a class="page-link" th:case="*" th:href="${planeta == null} ? @{/astronomy/br/satelites(size=${satelites.size}, page=${number})} : @{/astronomy/br/satelites/{id}(id=${planeta.id} , size=${satelites.size}, page=${number})}" th:text=${number} ></a>
+				      
+				    </li>
+				    
+				    <li class="page-item" th:if="${#lists.size(pageNumbers) - 2 == atual}"><a class="page-link" ><span aria-hidden="true">&raquo;</span></a></li>
+					
+				  </ul>
+				</nav>
 
-			</div>
+		</div>
 		</div>
 	
 	</div>

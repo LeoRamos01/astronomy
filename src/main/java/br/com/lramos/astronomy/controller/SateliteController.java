@@ -28,7 +28,7 @@ public class SateliteController {
 
 	static final String ASTRONOMY_BR_SATELITES = "/astronomy/br/satelites";
 
-	private static final String PAGINA_SATELITES = "satelites";
+	private static final String SATELLITE_PAGES = "satelites";
 
 	@Autowired
 	private SateliteBusiness sateliteBusiness;
@@ -37,10 +37,10 @@ public class SateliteController {
 	public ModelAndView listar(@RequestParam("page") Optional<Integer> page,
 			@RequestParam("size") Optional<Integer> size) {
 
-		ModelAndView model = new ModelAndView(PAGINA_SATELITES);
+		ModelAndView model = new ModelAndView(SATELLITE_PAGES);
 
 		Page<SateliteEntity> satelites = sateliteBusiness.listaTodos(page, size);
-		model.addObject(PAGINA_SATELITES, satelites);
+		model.addObject(SATELLITE_PAGES, satelites);
 		
 		addPageNumbers(model, satelites);
 
@@ -50,10 +50,10 @@ public class SateliteController {
 	@GetMapping("{id}")
 	public ModelAndView listarPorPlaneta(@PathVariable("id") PlanetEntity id,
 			@RequestParam("page") Optional<Integer> page, @RequestParam("size") Optional<Integer> size) {
-		ModelAndView model = new ModelAndView(PAGINA_SATELITES);
+		ModelAndView model = new ModelAndView(SATELLITE_PAGES);
 
 		Page<SateliteEntity> satelites = sateliteBusiness.listaTodosPorPlaneta(id, page, size);
-		model.addObject(PAGINA_SATELITES, satelites);
+		model.addObject(SATELLITE_PAGES, satelites);
 		model.addObject("planeta", id);
 		
         addPageNumbers(model, satelites);

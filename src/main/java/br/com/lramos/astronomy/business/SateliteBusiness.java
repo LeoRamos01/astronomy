@@ -4,10 +4,13 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
+import javax.annotation.PostConstruct;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import br.com.lramos.astronomy.entity.PlanetEntity;
@@ -27,6 +30,14 @@ public class SateliteBusiness {
 	@Autowired
 	private SateliteRepository sateliteRepo;
 	
+	private Sort sort;
+	
+	@PostConstruct
+	public void initSort () {
+		sort = Sort.by(Sort.Order.asc("planeta.distanceSun"),
+			    Sort.Order.desc("radius"));
+	}
+	
 	/**
 	 * @param page
 	 * @param size
@@ -34,11 +45,11 @@ public class SateliteBusiness {
 	 */
 	public Page<SateliteEntity> listaTodos(Optional<Integer> page, Optional<Integer> size) {
 
-		List<SateliteEntity> satelites = sateliteRepo.findAllByOrderByPlanetaOrdemAscRadiusDesc();
+		List<SateliteEntity> satelites = sateliteRepo.findAll(sort);
 
-		Page<SateliteEntity> bookPage = paginacao(page, size, satelites);
-
-		return bookPage;
+		Page<SateliteEntity> satellitePages = paginacao(page, size, satelites);
+		
+		return satellitePages;
 	}
 
 	/**
@@ -49,11 +60,11 @@ public class SateliteBusiness {
 	 */
 	public Page<SateliteEntity> listaTodosPorPlaneta(PlanetEntity id, Optional<Integer> page, Optional<Integer> size) {
 		
-		List<SateliteEntity> satelites = sateliteRepo.findAllByPlanetaOrderByRadiusDesc(id);
+		List<SateliteEntity> satelites = sateliteRepo.findAllByPlaneta(id, sort);
 		
-		Page<SateliteEntity> bookPage = paginacao(page, size, satelites);
+		Page<SateliteEntity> satellitePages = paginacao(page, size, satelites);
 		
-		return bookPage;
+		return satellitePages;
 	}
 	
 	private Page<SateliteEntity> paginacao(Optional<Integer> page, Optional<Integer> size,

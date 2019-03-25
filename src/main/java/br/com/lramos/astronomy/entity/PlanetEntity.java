@@ -25,8 +25,6 @@ public class PlanetEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	private Integer ordem;
-
 	private String name;
 
 	private String nomeBR;

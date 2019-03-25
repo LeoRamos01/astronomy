@@ -25,6 +25,6 @@ public interface PlanetRepository extends JpaRepository<PlanetEntity, Long> {
 	 * 
 	 * @return
 	 */
-	public List<PlanetEntity> findAllByOrderByOrdem();
+	public List<PlanetEntity> findAllByOrderByDistanceSunAsc();
 
 }

@@ -9,7 +9,7 @@
 				<table id="tabela" class="table table-bordered table-striped">
 					<thead class="thead-dark">
 						<tr>
-							<th scope="col">Satélite</th>
+							<th scope="col">Satélite <span class="glyphicon glyphicon-triangle-top"></span></th>
 							<th scope="col">Planeta</th>
 							<th scope="col">Diâmetro (km)</th>
 							<th scope="col">Gravidade superficial (m/s<sup>2</sup>)</th>
@@ -21,7 +21,8 @@
 							<td class="text-center" th:text="${satelite.name}" ></td>
 							<td class="text-center" th:text="${satelite.planeta.nomeBR}" ></td>
 							<td class="text-center" th:text="${#numbers.formatDecimal(satelite.radius * 2, 1, 'POINT', 1, 'COMMA')}"></td>
-							<td class="text-center" th:text="${#numbers.formatDecimal(satelite.gm / (satelite.radius * satelite.radius) * 1000, 1, 'POINT', 4, 'COMMA')}"></td>
+							<td class="text-center" th:if="${(satelite.gm / (satelite.radius * satelite.radius) * 1000) > 0.0001}" th:text="${#numbers.formatDecimal(satelite.gm / (satelite.radius * satelite.radius) * 1000, 1, 'POINT', 4, 'COMMA')}"></td>
+							<td class="text-center" th:if="${(satelite.gm / (satelite.radius * satelite.radius) * 1000) < 0.0001}" >Muito pequena</td>
 							<td class="text-center" th:text="${#numbers.formatDecimal(satelite.density, 1, 'POINT', 1, 'COMMA')}"></td>
 						</tr>
 						<tr>

@@ -15,6 +15,14 @@
  	<link href="/css/simple-sidebar.css" rel="stylesheet">
  	<link href="/css/menuLateral.css" rel="stylesheet">
  	<link href="/css/all.min.css" rel="stylesheet">
+ 	
+ 	
+  <!-- JQuery -->
+  <script src="/js/jquery-3.2.1.min.js"></script>
+  <!-- Bootstrap Dropdown JavaScript -->
+  <script src="/js/popper.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script src="/js/bootstrap.min.js"></script>
 
 </head>
 
@@ -71,22 +79,15 @@
         </div>
       </nav>
 
-      <div class="container-fluid">
-      		<div layout:fragment="conteudo">
-			</div>
-      </div>
+	<section layout:fragment="conteudo">
+        <p>Your page content goes here</p>
+    </section>
+    
     </div>
     <!-- /#page-content-wrapper -->
 
   </div>
   <!-- /#wrapper -->
-
-  <!-- JQuery -->
-  <script src="/js/jquery-3.2.1.min.js"></script>
-  <!-- Bootstrap Dropdown JavaScript -->
-  <script src="/js/popper.js"></script>
-  <!-- Bootstrap core JavaScript -->
-  <script src="/js/bootstrap.min.js"></script>
 
   <!-- Menu Toggle Script -->
   <script>
@@ -107,6 +108,7 @@
       }
       
     });
+    
   </script>
 
 </body>

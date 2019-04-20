@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * @author leonardorm
  *
@@ -80,6 +82,7 @@ public class PlanetEntity {
 	@Column(name = "has_global_magnetic_field")
 	private Boolean hasMagneticField;
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "planeta", cascade = CascadeType.ALL)
 	private Set<SateliteEntity> satelites;
 

@@ -7,6 +7,23 @@
 			<div class="card-body">
 				
 				<table id="tabela" class="table table-bordered table-striped">
+					<thead>
+			            <tr>
+			                <th>Nome</th>
+			                <th>Planeta</th>
+			                <th>Raio</th>
+			                <th>Densidade</th>
+			                <th>GM</th>
+			            </tr>
+			        </thead>
+			        <tfoot>
+			            <tr>
+			                <th>Nome</th>
+			                <th>Planeta</th>
+			                <th>Densidade</th>
+			                <th>GM</th>
+			            </tr>
+			        </tfoot>
 				</table>
 				
 		</div>
@@ -24,6 +41,7 @@
 		        "ajax": {url:"http://localhost:8080/astronomy/br/satelites/listar", dataSrc:""},
 		        "columns": [
 		        	{ "data": "name" },
+		        	{ "data": "planeta.nomeBR" },
 		        	{ "data": "radius" },
 		        	{ "data": "density" },
 		        	{ "data": "gm" }

@@ -1,50 +1,78 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="~{telaPadrao}">
-
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{telaPadrao}">
+  
 	<div layout:fragment="conteudo">
 	
 		<div class="card">
 			<div class="card-body">
 			
 				<table id="tabela" class="table table-bordered table-striped">
-					<thead class="thead-dark">
+					<thead>
 						<tr>
 							<th scope="col" >Planeta</th>
 							<th scope="col" >Massa (10<sup>24</sup>kg)</th>
-							<th scope="col" >DiÃ¢metro (km)</th>
+							<th scope="col" >Diâmetro (km)</th>
 							<th scope="col" >Gravidade (m/s<sup>2</sup>)</th>
-							<th scope="col" >G<sub>Terra</sub> </th>
+<!-- 							<th scope="col" >G<sub>Terra</sub> </th> -->
 							<th scope="col" >Densidade (g/cm<sup>3</sup>)</th>
-							<th scope="col" >nÂ° Luas</th>
+							<th scope="col" >n° Luas</th>
 						</tr>
 					</thead>
-					<tbody>
-						<tr th:each="planeta : ${planetas}">
-							<td class="text-center" th:text="${planeta.nomeBR}" ></td>
-							<td class="text-center" th:text="${#numbers.formatDecimal(planeta.mass, 1, 'POINT', 2, 'COMMA')}" ></td>
-							<td class="text-center" th:text="${#numbers.formatDecimal(planeta.diameter, 1, 'POINT', 0, 'COMMA')}"></td>
-							<td class="text-center" th:text="${#numbers.formatDecimal(planeta.gravity, 1, 'POINT', 1, 'COMMA')}"></td>
-							<td class="text-center" th:text="${#numbers.formatDecimal(planeta.gravity / terra.gravity, 1, 'POINT', 1, 'COMMA')}"></td>
-							<td class="text-center" th:text="${#numbers.formatDecimal(planeta.density / 1000, 1, 'POINT', 1, 'COMMA')}"></td>
-							<td class="text-center" th:if="${planeta.numberMoons} > 0">
-								
-								<a class="btn btn-link btn-xs" th:text="${planeta.numberMoons}"  th:href="@{/astronomy/br/satelites/{id}(id=${planeta.id})}" 
-										title="Ver luas" rel="tooltip" data-placement="auto">
-								</a>
-								
-							</td>
-							<td class="text-center" th:if="${planeta.numberMoons} == 0">
-								0
-							</td>
+					<tfoot>
+						<tr>
+							<th scope="col" >Planeta</th>
+							<th scope="col" >Massa (10<sup>24</sup>kg)</th>
+							<th scope="col" >Diâmetro (km)</th>
+							<th scope="col" >Gravidade (m/s<sup>2</sup>)</th>
+<!-- 							<th scope="col" >G<sub>Terra</sub> </th> -->
+							<th scope="col" >Densidade (g/cm<sup>3</sup>)</th>
+							<th scope="col" >n° Luas</th>
 						</tr>
-					</tbody>
+					</tfoot>
 				</table>
 
 			</div>
 		</div>
+	
+	<script type="text/javascript" src="/js/dataTable.min.js"></script>
+	<script type="text/javascript" src="/js/dataTables.bootstrap4.min.js"></script>
+	
+	<script th:inline="none">
+	
+		$(document).ready(carregarTabela());
+	
+		function carregarTabela() {
+		    $('#tabela').DataTable( {
+		        processing: true,
+		        ajax: {url:"http://localhost:8080/astronomy/br/planetas/listar", dataSrc:""},
+		        columns: [
+		        	{ data: "nomeBR", "orderData":[ 6 ]},
+		        	{ data: "mass" },
+		        	{ data: "diameter" },
+		        	{ data: "gravity" },
+		        	{ data: "density" },
+		        	{ 
+		                "data": "numberMoons",
+		                "render": function(data, type, row, meta){
+		                   if(type === 'display'){
+		                       data = '<a href="http://localhost:8080/astronomy/br/satelites/' + row.id + '">' + row.numberMoons + '</a>';
+		                   }
+		                   return data;
+		                }
+		             },
+		        	{ data: "distanceSun", "visible": false, "searchable": false }
+		        ],
+		        order: [[ 0, "asc" ]],
+		        language: {
+		        	  url: "/js/json/datatablePtBr.json"
+	        	}
+		    } );
+		} 
+		
+	</script>
 	
 	</div>
 

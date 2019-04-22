@@ -1,17 +1,33 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="~{telaPadrao}">
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{telaPadrao}">
 
 	<div layout:fragment="conteudo">
-	
-		<input id="satelites" type="hidden" th:value="${satelites}">
 	
 		<div class="card">
 			<div class="card-body">
 				
 				<table id="tabela" class="table table-bordered table-striped">
+					<thead>
+			            <tr>
+			                <th>Nome</th>
+			                <th>Planeta</th>
+			                <th>Raio</th>
+			                <th>Densidade</th>
+			                <th>GM</th>
+			            </tr>
+			        </thead>
+			        <tfoot>
+			            <tr>
+			                <th>Nome</th>
+			                <th>Planeta</th>
+			                <th>Raio</th>
+			                <th>Densidade</th>
+			                <th>GM</th>
+			            </tr>
+			        </tfoot>
 				</table>
 				
 		</div>
@@ -19,22 +35,31 @@
 	</div>
 	
 	<script type="text/javascript" src="/js/dataTable.min.js"></script>
-	<script th:inline="javascript">
+	<script type="text/javascript" src="/js/dataTables.bootstrap4.min.js"></script>
+	
+	<script th:inline="none">
+	
 		$(document).ready(carregarTabela());
 	
 		function carregarTabela() {
-			
-			var lista = ${satelites}
-			
-			 $('#tabela').DataTable({
-			        "aaData":lista,
-			        "aoColumns": [
-			        	{"mDataProp": "name"},
-			        	{"mDataProp": "diameter"},
-			        ]
-			       
-			    });
+		    $('#tabela').DataTable( {
+		        processing: true,
+		        ajax: {url:"http://localhost:8080/astronomy/br/satelites/listar", dataSrc:""},
+		        columns: [
+		        	{ data: "name" },
+		        	{ data: "planeta.nomeBR", "orderData":[ 5 ]},
+		        	{ data: "radius" },
+		        	{ data: "density" },
+		        	{ data: "gm" },
+		        	{ data: "planeta.distanceSun", "visible": false, "searchable": false }
+		        ],
+		        order: [[ 1, "asc" ], [ 2, "desc" ]],
+		        language: {
+		        	  url: "/js/json/datatablePtBr.json"
+	        	}
+		    } );
 		} 
+		
 	</script>
 	
 	</div>

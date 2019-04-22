@@ -30,7 +30,7 @@ public class SateliteController {
 		return new ModelAndView(SATELLITE_PAGES);
 	}
 	
-	@GetMapping("{id}")
+	@GetMapping("/{id}")
 	public ModelAndView satelitesPorPlaneta(PlanetEntity planeta) {
 		session.setAttribute("planeta", planeta);
 		return new ModelAndView(SATELLITE_PAGES);

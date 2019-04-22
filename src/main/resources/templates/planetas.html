@@ -51,7 +51,16 @@
 		        	{ data: "diameter" },
 		        	{ data: "gravity" },
 		        	{ data: "density" },
-		        	{ data: "numberMoons" },
+		        	{ 
+		                "data": "numberMoons",
+		                "render": function(data, type, row, meta){
+		                   if(type === 'display'){
+		                       data = '<a href="http://localhost:8080/astronomy/br/satelites/' + row.id + '">' + row.numberMoons + '</a>';
+		                   }
+
+		                   return data;
+		                }
+		             },
 		        	{ data: "distanceSun", "visible": false, "searchable": false }
 		        ],
 		        order: [[ 0, "asc" ]],

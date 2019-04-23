@@ -27,6 +27,7 @@ public class SateliteController {
 	
 	@GetMapping
 	public ModelAndView index() {
+		session.removeAttribute("planeta");
 		return new ModelAndView(SATELLITE_PAGES);
 	}
 	

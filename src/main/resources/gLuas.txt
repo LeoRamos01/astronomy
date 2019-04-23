@@ -1,0 +1,4 @@
+
+Calculo da gravidade superficial das luas:
+
+satelite.gm / (satelite.radius * satelite.radius) * 1000

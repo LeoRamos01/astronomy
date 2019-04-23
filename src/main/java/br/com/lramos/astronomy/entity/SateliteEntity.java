@@ -28,13 +28,15 @@ public class SateliteEntity {
 
 	private Double gm;
 	
-	private Double radius;
+	private Double diameter;
 	
 	private Double density;
 	
 	private Double magnitude;
 	
 	private Double albedo;
+	
+	private Double surfaceGravity;
 
 	public Long getId() {
 		return id;
@@ -68,12 +70,20 @@ public class SateliteEntity {
 		this.gm = gm;
 	}
 
-	public Double getRadius() {
-		return radius;
+	public Double getDiameter() {
+		return diameter;
 	}
 
-	public void setRadius(Double radius) {
-		this.radius = radius;
+	public void setDiameter(Double diameter) {
+		this.diameter = diameter;
+	}
+
+	public Double getSurfaceGravity() {
+		return surfaceGravity;
+	}
+
+	public void setSurfaceGravity(Double surfaceGravity) {
+		this.surfaceGravity = surfaceGravity;
 	}
 
 	public Double getDensity() {

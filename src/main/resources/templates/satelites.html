@@ -11,18 +11,18 @@
 			            <tr>
 			                <th>Nome</th>
 			                <th>Planeta</th>
-			                <th>Raio</th>
-			                <th>Densidade</th>
-			                <th>GM</th>
+			                <th>Diâmetro médio (km)</th>
+			                <th>Densidade (kg/m³)</th>
+			                <th>Gravidade (m/s²)</th>
 			            </tr>
 			        </thead>
 			        <tfoot>
 			            <tr>
 			                <th>Nome</th>
 			                <th>Planeta</th>
-			                <th>Raio</th>
-			                <th>Densidade</th>
-			                <th>GM</th>
+			                <th>Diâmetro médio (km)</th>
+			                <th>Densidade (kg/m³)</th>
+			                <th>Gravidade (m/s²)</th>
 			            </tr>
 			        </tfoot>
 				</table>
@@ -45,9 +45,9 @@
 		        columns: [
 		        	{ data: "name" },
 		        	{ data: "planeta.nomeBR", "orderData":[ 5 ]},
-		        	{ data: "radius" },
+		        	{ data: "diameter" },
 		        	{ data: "density" },
-		        	{ data: "gm" },
+		        	{ data: "surfaceGravity" },
 		        	{ data: "planeta.distanceSun", "visible": false, "searchable": false }
 		        ],
 		        order: [[ 1, "asc" ], [ 2, "desc" ]],

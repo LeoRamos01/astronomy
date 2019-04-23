@@ -1,6 +1,9 @@
 <!DOCTYPE html>
-<html layout:decorate="telaPadrao">
-
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{telaPadrao}">
+  
 	<div layout:fragment="conteudo">
 	
 		<div class="card">
@@ -57,7 +60,6 @@
 		                   if(type === 'display'){
 		                       data = '<a href="http://localhost:8080/astronomy/br/satelites/' + row.id + '">' + row.numberMoons + '</a>';
 		                   }
-
 		                   return data;
 		                }
 		             },

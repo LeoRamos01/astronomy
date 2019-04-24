@@ -1,7 +1,7 @@
  -- densidade de g/cm³ para kg/m³
  -- trocando raio para diâmetro
  -- Calculando gravidade superficial a partir de GM conforme fórmula:
- -- satelite.gm / (satelite.radius * satelite.radius) * 1000
+ -- 	satelite.gm / (satelite.radius * satelite.radius) * 1000
 
 UPDATE satellite
 SET density = density * 1000,

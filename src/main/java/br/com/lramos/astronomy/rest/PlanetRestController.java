@@ -20,7 +20,12 @@ public class PlanetRestController {
 
 	@GetMapping("/listar")
 	public List<PlanetEntity> listar() {
-		return business.listaTodos();
+		return business.listaTodosPlanetas();
+	}
+	
+	@GetMapping("/listar/dwarfs")
+	public List<PlanetEntity> listarAnoes() {
+		return business.listaTodosPlanetasAnoes();
 	}
 	
 }

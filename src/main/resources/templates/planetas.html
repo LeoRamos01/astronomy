@@ -9,7 +9,39 @@
 		<div class="card">
 			<div class="card-body">
 			
+				<h2>Planetas</h2>
 				<table id="tabela" class="table table-bordered table-striped">
+					<thead>
+						<tr>
+							<th scope="col" >Planeta</th>
+							<th scope="col" >Massa (10<sup>24</sup>kg)</th>
+							<th scope="col" >Diâmetro (km)</th>
+							<th scope="col" >Gravidade (m/s<sup>2</sup>)</th>
+<!-- 							<th scope="col" >G<sub>Terra</sub> </th> -->
+							<th scope="col" >Densidade (kg/m<sup>3</sup>)</th>
+							<th scope="col" >n° Luas</th>
+						</tr>
+					</thead>
+					<tfoot>
+						<tr>
+							<th scope="col" >Planeta</th>
+							<th scope="col" >Massa (10<sup>24</sup>kg)</th>
+							<th scope="col" >Diâmetro (km)</th>
+							<th scope="col" >Gravidade (m/s<sup>2</sup>)</th>
+<!-- 							<th scope="col" >G<sub>Terra</sub> </th> -->
+							<th scope="col" >Densidade (kg/m<sup>3</sup>)</th>
+							<th scope="col" >n° Luas</th>
+						</tr>
+					</tfoot>
+				</table>
+				
+			</div>
+		</div>
+				
+		<div class="card">
+			<div class="card-body">
+				<h2>Planetas anões</h2>
+				<table id="tabelaPlanetasAnoes" class="table table-bordered table-striped">
 					<thead>
 						<tr>
 							<th scope="col" >Planeta</th>
@@ -42,7 +74,10 @@
 	
 	<script th:inline="none">
 	
-		$(document).ready(carregarTabela());
+		$(document).ready(function(){
+			carregarTabela();
+			carregarTabelaPlanetasAnoes();
+		});
 	
 		function carregarTabela() {
 		    $('#tabela').DataTable( {
@@ -57,8 +92,10 @@
 		        	{ 
 		                "data": "numberMoons",
 		                "render": function(data, type, row, meta){
-		                   if(type === 'display'){
+		                   if(type === 'display' && row.numberMoons > 0){
 		                       data = '<a href="http://localhost:8080/astronomy/br/satelites/' + row.id + '">' + row.numberMoons + '</a>';
+		                   } else {
+		                	   data = row.numberMoons;
 		                   }
 		                   return data;
 		                }
@@ -70,7 +107,37 @@
 		        	  url: "/js/json/datatablePtBr.json"
 	        	}
 		    } );
-		} 
+		}
+		
+		function carregarTabelaPlanetasAnoes() {
+		    $('#tabelaPlanetasAnoes').DataTable( {
+		        processing: true,
+		        ajax: {url:"http://localhost:8080/astronomy/br/planetas/listar/dwarfs", dataSrc:""},
+		        columns: [
+		        	{ data: "nomeBR", "orderData":[ 6 ]},
+		        	{ data: "mass" },
+		        	{ data: "diameter" },
+		        	{ data: "gravity" },
+		        	{ data: "density" },
+		        	{ 
+		                "data": "numberMoons",
+		                "render": function(data, type, row, meta){
+		                   if(type === 'display' && row.numberMoons > 0){
+		                       data = '<a href="http://localhost:8080/astronomy/br/satelites/' + row.id + '">' + row.numberMoons + '</a>';
+		                   } else {
+		                	   data = row.numberMoons;
+		                   }
+		                   return data;
+		                }
+		             },
+		        	{ data: "distanceSun", "visible": false, "searchable": false }
+		        ],
+		        order: [[ 0, "asc" ]],
+		        language: {
+		        	  url: "/js/json/datatablePtBr.json"
+	        	}
+		    } );
+		}
 		
 	</script>
 	

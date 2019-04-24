@@ -13,7 +13,7 @@ VALUES('Haumea', 'Haumea', 0.004006, 1632.000000, 1885.000000, 0.401, 0.809, 0.1
 
 INSERT INTO satellite
 (planet_id, name, gm, diameter, density, magnitude, albedo, surfaceGravity)
-VALUES((SELECT id FROM planet WHERE name = "Haumea"), 'Hi\'iaka', 0.0, 310.000000, 0.000000, 0.0, 0.0, 0.0);
+VALUES((SELECT id FROM planet WHERE name = "Haumea"), "Hi'iaka", 0.0, 310.000000, 0.000000, 0.0, 0.0, 0.0);
 
 INSERT INTO satellite
 (planet_id, name, gm, diameter, density, magnitude, albedo, surfaceGravity)
@@ -30,3 +30,10 @@ VALUES('Makemake', 'Makemake', 0.0044, 1.430, 2300.000000, 0.5, 0.8, 0.000000, 2
 INSERT INTO satellite
 (planet_id, name, gm, diameter, density, magnitude, albedo, surfaceGravity)
 VALUES((SELECT id FROM planet WHERE name = "Makemake"), 'S/2015 (136472) 1', 0.0, 175.000000, 0.000000, 0.0, 0.0, 0.0);
+
+ALTER TABLE planet ADD COLUMN is_dwarf tinyint(1) NOT NULL DEFAULT 0;
+
+UPDATE planet
+SET is_dwarf = 1
+WHERE id > 8;
+

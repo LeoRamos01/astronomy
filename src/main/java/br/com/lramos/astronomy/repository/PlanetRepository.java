@@ -21,10 +21,12 @@ public interface PlanetRepository extends JpaRepository<PlanetEntity, Long> {
 	public PlanetEntity findByName(String string);
 
 	/**
-	 * {@link List} dos planetas ordenados pela distância relativa ao Sol.
-	 * 
-	 * @return
+	 * @return {@link List} dos {@link PlanetEntity} planetas, exceto planetas anões.
 	 */
-	public List<PlanetEntity> findAllByOrderByDistanceSunAsc();
-
+	public List<PlanetEntity> findAllByIsDwarfFalse();
+	
+	/**
+	 * @return {@link List} dos {@link PlanetEntity} que são planetas anões.
+	 */
+	public List<PlanetEntity> findAllByIsDwarfTrue();
 }

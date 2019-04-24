@@ -14,18 +14,42 @@ import br.com.lramos.astronomy.repository.PlanetRepository;
  */
 @Service
 public class PlanetaBusiness {
-	
+
 	@Autowired
 	private PlanetRepository planetRepo;
-	
+
 	/**
 	 * @return {@link List} de todos os {@link PlanetEntity}.
 	 */
 	public List<PlanetEntity> listaTodos() {
-		return planetRepo.findAllByOrderByDistanceSunAsc();
+		return planetRepo.findAll();
 	}
-	
-	public PlanetEntity getTerra () {
+
+	/**
+	 * 
+	 * Busca planetas.
+	 * 
+	 * @return
+	 */
+	public List<PlanetEntity> listaTodosPlanetas() {
+		return planetRepo.findAllByIsDwarfFalse();
+	}
+
+	/**
+	 * 
+	 * Busca planetas anões.
+	 * 
+	 * @return
+	 */
+	public List<PlanetEntity> listaTodosPlanetasAnoes() {
+		return planetRepo.findAllByIsDwarfTrue();
+	}
+
+	/**
+	 * @return {@link PlanetEntity} que representa a Terra, para ter seus valores
+	 *         utilizados como comparativos.
+	 */
+	public PlanetEntity getTerra() {
 		return planetRepo.findByName("Earth");
 	}
 

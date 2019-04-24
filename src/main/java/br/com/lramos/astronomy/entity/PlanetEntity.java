@@ -81,6 +81,9 @@ public class PlanetEntity {
 
 	@Column(name = "has_global_magnetic_field")
 	private Boolean hasMagneticField;
+	
+	@Column(name = "is_dwarf")
+	private Boolean isDwarf;
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "planeta", cascade = CascadeType.ALL)
@@ -276,6 +279,14 @@ public class PlanetEntity {
 
 	public void setSatelites(Set<SateliteEntity> satelites) {
 		this.satelites = satelites;
+	}
+
+	public Boolean getIsDwarf() {
+		return isDwarf;
+	}
+
+	public void setIsDwarf(Boolean isDwarf) {
+		this.isDwarf = isDwarf;
 	}
 
 }

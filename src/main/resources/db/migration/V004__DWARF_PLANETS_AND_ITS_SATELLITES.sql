@@ -25,7 +25,7 @@ VALUES('Ceres', 'Ceres', 0.0009393, 946.000000, 2161.000000, 0.28, 0.51, 0.00000
 
 INSERT INTO planet
 (name, nomeBR, mass, diameter, density, gravity, escape_velocity, rotation_period, length_of_day, distance_from_sun, perihelion, aphelion, orbital_period, orbital_velocity, orbital_inclination, orbital_eccentricity, obliquity_to_orbit, mean_temperature, surface_pressure, number_of_moons, has_ring_system, has_global_magnetic_field)
-VALUES('Makemake', 'Makemake', 0.0044, 1.430, 2300.000000, 0.5, 0.8, 0.000000, 22.8266, 6815.8, 5738.6, 7892.9, 112327, 4.419, 0.000000, 0.15804, 0.000000, -239.0, 0.000000, 1, 0, 0);
+VALUES('Makemake', 'Makemake', 0.0044, 1430.0, 2300.000000, 0.5, 0.8, 0.000000, 22.8266, 6815.8, 5738.6, 7892.9, 112327, 4.419, 0.000000, 0.15804, 0.000000, -239.0, 0.000000, 1, 0, 0);
 
 INSERT INTO satellite
 (planet_id, name, gm, diameter, density, magnitude, albedo, surfaceGravity)

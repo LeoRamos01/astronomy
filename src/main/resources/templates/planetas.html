@@ -14,6 +14,7 @@
 					<thead>
 						<tr>
 							<th scope="col" >Planeta</th>
+							<th scope="col" >Distância média Sol (10⁶km)</th>
 							<th scope="col" >Massa (10<sup>24</sup>kg)</th>
 							<th scope="col" >Diâmetro (km)</th>
 							<th scope="col" >Gravidade (m/s<sup>2</sup>)</th>
@@ -25,6 +26,7 @@
 					<tfoot>
 						<tr>
 							<th scope="col" >Planeta</th>
+							<th scope="col" >Distância média Sol (10⁶km)</th>
 							<th scope="col" >Massa (10<sup>24</sup>kg)</th>
 							<th scope="col" >Diâmetro (km)</th>
 							<th scope="col" >Gravidade (m/s<sup>2</sup>)</th>
@@ -45,6 +47,7 @@
 					<thead>
 						<tr>
 							<th scope="col" >Planeta</th>
+							<th scope="col" >Distância média Sol (10⁶km)</th>
 							<th scope="col" >Massa (10<sup>24</sup>kg)</th>
 							<th scope="col" >Diâmetro (km)</th>
 							<th scope="col" >Gravidade (m/s<sup>2</sup>)</th>
@@ -56,6 +59,7 @@
 					<tfoot>
 						<tr>
 							<th scope="col" >Planeta</th>
+							<th scope="col" >Distância média Sol (10⁶km)</th>
 							<th scope="col" >Massa (10<sup>24</sup>kg)</th>
 							<th scope="col" >Diâmetro (km)</th>
 							<th scope="col" >Gravidade (m/s<sup>2</sup>)</th>
@@ -85,6 +89,7 @@
 		        ajax: {url:"http://localhost:8080/astronomy/br/planetas/listar", dataSrc:""},
 		        columns: [
 		        	{ data: "nomeBR", "orderData":[ 6 ]},
+		        	{ data: "distanceSun" },
 		        	{ data: "mass" },
 		        	{ data: "diameter" },
 		        	{ data: "gravity" },
@@ -115,6 +120,7 @@
 		        ajax: {url:"http://localhost:8080/astronomy/br/planetas/listar/dwarfs", dataSrc:""},
 		        columns: [
 		        	{ data: "nomeBR", "orderData":[ 6 ]},
+		        	{ data: "distanceSun" },
 		        	{ data: "mass" },
 		        	{ data: "diameter" },
 		        	{ data: "gravity" },

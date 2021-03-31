@@ -13,14 +13,14 @@
 
 	<label for="select">Escolha um astro</label>
     <select class="form-control" id="astro">
-      <option th:each="planeta : ${planetas}" th:value="${planeta.gravity}" th:text="${planeta.name}"></option>
+      <option th:each="planeta : ${planetas}" th:value="${planeta.gravity}" th:text="${planeta.nomeBR}"></option>
     </select>
 
 	<br/>
 
 	<button type="button" class="btn btn-primary" th:onclick="javascript:calcular()">Calcular</button>
 
-	<br/>
+	<br/><br/>
 
     <div class="col-sm-10">
       <input type="text" readonly class="form-control-plaintext" id="peso" value="">
@@ -30,6 +30,15 @@
 	<script type="text/javascript" src="/js/dataTables.bootstrap4.min.js"></script>
 	
 	<script th:inline="none">
+	
+		function getSelectedText(elementId) {
+		    var elt = document.getElementById(elementId);
+	
+		    if (elt.selectedIndex == -1)
+		        return null;
+	
+		    return elt.options[elt.selectedIndex].text;
+		}
 		
 		function calcular() {
 			var massa = document.getElementById("massa").value;
@@ -37,7 +46,9 @@
 			
 			var peso = Math.round((massa * gravidade / 9.8 + Number.EPSILON) * 100) / 100;
 			
-			document.getElementById("peso").value = "Você teria a sensação de pesar " + peso + " kg."
+			var planeta = getSelectedText('astro');
+			
+			document.getElementById("peso").value = "Você teria a sensação de pesar " + peso + " kg no planeta " + planeta + "."
 		}
 		
 	</script>

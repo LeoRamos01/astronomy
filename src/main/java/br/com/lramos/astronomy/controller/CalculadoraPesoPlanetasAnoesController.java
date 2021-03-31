@@ -9,12 +9,12 @@ import org.springframework.web.servlet.ModelAndView;
 import br.com.lramos.astronomy.business.PlanetaBusiness;
 
 @Controller
-@RequestMapping(CalculadoraPesoController.ASTRONOMY_PESO)
-public class CalculadoraPesoController {
+@RequestMapping(CalculadoraPesoPlanetasAnoesController.ASTRONOMY_PESO)
+public class CalculadoraPesoPlanetasAnoesController {
 
-	public static final String ASTRONOMY_PESO = "/astronomy/br/peso";
+	public static final String ASTRONOMY_PESO = "/astronomy/br/peso-anoes";
 	
-	private static final String PAGINA_PESO = "peso";
+	private static final String PAGINA_PESO = "peso-anoes";
 	
 	@Autowired
 	PlanetaBusiness planetaBusiness;
@@ -23,7 +23,7 @@ public class CalculadoraPesoController {
 	public ModelAndView listar() {
 		ModelAndView mv = new ModelAndView(PAGINA_PESO);
 		
-		mv.addObject("planetas", planetaBusiness.listaTodos());
+		mv.addObject("planetas", planetaBusiness.listaTodosPlanetasAnoes());
 		
 		return mv;
 	}

@@ -27,6 +27,8 @@ public class PlanetEntity {
 	private String name;
 
 	private String nomeBR;
+	
+	private String natalidade;
 
 	private Double mass;
 
@@ -287,6 +289,14 @@ public class PlanetEntity {
 
 	public void setIsDwarf(Boolean isDwarf) {
 		this.isDwarf = isDwarf;
+	}
+
+	public String getNatalidade() {
+		return natalidade;
+	}
+
+	public void setNatalidade(String natalidade) {
+		this.natalidade = natalidade;
 	}
 
 }

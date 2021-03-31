@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{telaPadrao}">
+  
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" />
+
+	<div layout:fragment="conteudo">
+	
+	<div class="form-group">
+	    <label for="select">Data nascimento</label>
+	    <input type='date' min='01/01/1899' max='01/01/2021' class="form-control" id="idade" aria-describedby="emailHelp"></input>
+  	</div>
+
+	<label for="select">Escolha um astro</label>
+    <select class="form-control" id="astro">
+      <option th:each="planeta : ${planetas}" th:attr="data-natalidade=${planeta.natalidade}" th:value="${planeta.orbitalPeriod}" th:text="${planeta.nomeBR}"></option>
+    </select>
+
+	<br/>
+
+	<button type="button" class="btn btn-primary" th:onclick="javascript:calcular()">Calcular</button>
+
+	<br/><br/>
+
+    <div class="col-sm-10">
+     <input type="text" readonly class="form-control-plaintext" id="idadeOutro" value="">
+   	</div>
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+	<script type="text/javascript" src="/js/dataTable.min.js"></script>
+	<script type="text/javascript" src="/js/dataTables.bootstrap4.min.js"></script>
+	
+	<script th:inline="none">
+	
+		$(document).ready(function(){
+			
+			var today = new Date();
+			var dd = today.getDate();
+			var mm = today.getMonth()+1; //January is 0!
+			var yyyy = today.getFullYear();
+			
+			if(dd<10){
+		       dd='0'+dd
+		   	} 
+			
+			if(mm<10){
+		       mm='0'+mm
+		   	} 
+
+			var ddMin = 01;
+			var mmMin = 01;
+			var yyyyMin = 1899;
+			
+			today = yyyy + '-' + mm + '-' + dd;
+			minDate = yyyyMin + '-' + mmMin + '-' + ddMin;
+			
+			document.getElementById("idade").setAttribute("max", today);
+			document.getElementById("idade").setAttribute("min", minDate);
+			
+			$('#sandbox-container input').datepicker({
+			    format: "dd/mm/yyyy"
+			});
+		});
+	
+		function getNatalidade(elementId) {
+		    var elt = document.getElementById(elementId);
+	
+		    if (elt.selectedIndex == -1)
+		        return null;
+	
+		    return elt.options[elt.selectedIndex].getAttribute('data-natalidade');
+		}
+		
+		function getSelectedText(elementId) {
+		    var elt = document.getElementById(elementId);
+	
+		    if (elt.selectedIndex == -1)
+		        return null;
+	
+		    return elt.options[elt.selectedIndex].text;
+		}
+		
+		function calcular() {
+			
+			var idadeTerrestre = document.getElementById("idade").value;
+			console.log(idadeTerrestre)
+			
+			var idadeEmDias = ((new Date() - new Date(idadeTerrestre)) / (1000 * 60 * 60 * 24))
+			console.log(idadeEmDias)
+			
+			var periodoOrbitalTerra = 365.2;
+			var periodoOrbitalOutro = document.getElementById("astro").value;
+			
+			var idadeOutro = Math.round((idadeEmDias / periodoOrbitalOutro + Number.EPSILON) * 100) / 100;
+			
+			var natalidade = getNatalidade('astro');
+			
+			document.getElementById("idadeOutro").value = "Você teria " + idadeOutro + " ano(s) " + natalidade + "."
+
+		}
+		
+	</script>
+	
+	</div>
+
+</html>

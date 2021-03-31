@@ -84,6 +84,8 @@
 		
 		function calcular() {
 			
+			var planeta = getSelectedText('astro');
+			
 			var idadeTerrestre = document.getElementById("idade").value;
 			console.log(idadeTerrestre)
 			
@@ -96,6 +98,10 @@
 			var idadeOutro = Math.round((idadeEmDias / periodoOrbitalOutro + Number.EPSILON) * 100) / 100;
 			
 			var natalidade = getNatalidade('astro');
+			
+			if(natalidade == null) {
+				natalidade = "no planeta " + planeta;
+			}
 			
 			document.getElementById("idadeOutro").value = "Você teria " + idadeOutro + " ano(s) " + natalidade + "."
 

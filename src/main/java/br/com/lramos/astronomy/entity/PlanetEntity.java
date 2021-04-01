@@ -25,6 +25,8 @@ public class PlanetEntity {
 	private Long id;
 	
 	private String name;
+	
+	private String imagem;
 
 	private String nomeBR;
 	
@@ -297,6 +299,14 @@ public class PlanetEntity {
 
 	public void setNatalidade(String natalidade) {
 		this.natalidade = natalidade;
+	}
+
+	public String getImagem() {
+		return imagem;
+	}
+
+	public void setImagem(String imagem) {
+		this.imagem = imagem;
 	}
 
 }

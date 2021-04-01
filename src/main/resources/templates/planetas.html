@@ -13,6 +13,7 @@
 				<table id="tabela" class="table table-bordered table-striped">
 					<thead>
 						<tr>
+							<th scope="col" ></th>
 							<th scope="col" >Planeta</th>
 							<th scope="col" >D<sub>M</sub> Sol (10⁶km)</th>
 							<th scope="col" >Massa (10<sup>24</sup>kg)</th>
@@ -46,6 +47,7 @@
 				<table id="tabelaPlanetasAnoes" class="table table-bordered table-striped">
 					<thead>
 						<tr>
+							<th scope="col" ></th>
 							<th scope="col" >Planeta</th>
 							<th scope="col" >D<sub>M</sub> Sol (10⁶km)</th>
 							<th scope="col" >Massa (10<sup>24</sup>kg)</th>
@@ -88,6 +90,12 @@
 		        processing: true,
 		        ajax: {url:"http://localhost:8080/astronomy/br/planetas/listar", dataSrc:""},
 		        columns: [
+		        	{ data: "imagem",
+						"render": function(data, type, row, meta){
+									data = '<img src="' +  row.imagem + '" alt="Italian Trulli" width="50" height="50">'
+						          return data;
+						       }
+		        	},
 		        	{ data: "nomeBR", "orderData":[ 6 ]},
 		        	{ data: "distanceSun" },
 		        	{ data: "mass" },
@@ -119,6 +127,12 @@
 		        processing: true,
 		        ajax: {url:"http://localhost:8080/astronomy/br/planetas/listar/dwarfs", dataSrc:""},
 		        columns: [
+		        	{ data: "imagem",
+						"render": function(data, type, row, meta){
+									data = '<img src="' +  row.imagem + '" alt="Italian Trulli" width="50" height="50">'
+						          return data;
+						       }
+		        	},
 		        	{ data: "nomeBR", "orderData":[ 6 ]},
 		        	{ data: "distanceSun" },
 		        	{ data: "mass" },

@@ -95,7 +95,13 @@
 			var periodoOrbitalTerra = 365.2;
 			var periodoOrbitalOutro = document.getElementById("astro").value;
 			
-			var idadeOutro = Math.round((idadeEmDias / periodoOrbitalOutro + Number.EPSILON) * 100) / 100;
+			var idadeOutroEmAnos = Math.round((idadeEmDias / periodoOrbitalOutro + Number.EPSILON) * 100) / 100;
+			
+			var mesesFaltantes = Math.round(((idadeOutroEmAnos % 1)*12 + Number.EPSILON) * 100) / 100;
+			
+			var diasFaltantes = Math.round(((mesesFaltantes % 1)*30 + Number.EPSILON) * 100) / 100;
+			
+			var idadeDescritiva = Math.floor(idadeOutroEmAnos) + " ano(s) " + Math.floor(mesesFaltantes) + " mês(es) " + Math.floor(diasFaltantes) + " dia(s) ";
 			
 			var natalidade = getNatalidade('astro');
 			
@@ -103,7 +109,7 @@
 				natalidade = "no planeta " + planeta;
 			}
 			
-			document.getElementById("idadeOutro").value = "Você teria " + idadeOutro + " ano(s) " + natalidade + "."
+			document.getElementById("idadeOutro").value = "Você teria " + idadeDescritiva + natalidade + "."
 
 		}
 		
